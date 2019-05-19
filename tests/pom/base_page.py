@@ -1,8 +1,10 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
 class BasePage:
+
     def __init__(self, driver):
         self.driver = driver
         self.timeout = 60
@@ -21,7 +23,7 @@ class BasePage:
         self.driver.back()
 
     def navigate_forward(self):
-        self.drive.forward()
+        self.driver.forward()
 
     def get_current_page_title(self):
         WebDriverWait(self.driver, self.timeout).until(lambda s: self.driver.title)
@@ -34,3 +36,14 @@ class BasePage:
                                           StaleElementReferenceException]) \
             .until(expected_conditions.element_to_be_clickable(selector))
         return self.driver.find_element(*selector)
+
+    def get_element_selector_by_value(self, stringLocator, value):
+        return (By.XPATH, stringLocator.replace("{value}", value))
+
+    def get_element_by_selector(self, selector):
+        try:
+            WebDriverWait(self.driver, self.timeout).until(
+                expected_conditions.visibility_of_element_located(selector))
+            return self.driver.find_element(*selector)
+        except TimeoutException:
+            return None

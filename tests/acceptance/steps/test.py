@@ -4,13 +4,6 @@ from tests.pom.home_page import HomePage
 
 use_step_matcher('re')
 
-@given('I access Carnival Home Page')
-def step_imp(context):
-    context.driver = webdriver.Chrome()
-    homePage = HomePage(context.driver)
-    homePage.open_home_page()
-    context.page = homePage
-
 @when('I click on the Carnival Logo')
 def step_imp(context):
     context.page.clik_on_home_page_logo()

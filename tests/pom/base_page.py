@@ -47,3 +47,14 @@ class BasePage:
             return self.driver.find_element(*selector)
         except TimeoutException:
             return None
+
+    def get_element_list_by_selector(self, selector):
+        try:
+            WebDriverWait(self.driver, self.timeout,
+                          ignored_exceptions=[ElementNotVisibleException,
+                                              ElementNotSelectableException,
+                                              StaleElementReferenceException]) \
+                .until(expected_conditions.presence_of_element_located(selector))
+            return self.driver.find_elements(*selector)
+        except TimeoutException:
+            return []

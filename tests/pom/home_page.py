@@ -37,4 +37,19 @@ class HomePage(BasePage):
         elif(viewType == 'list'):
             return self.ccl_view_results.are_results_list()
 
+    def click_on_pricing_filter(self):
+        self.cdc_results_filter.click_on_price_filter()
+
+    def click_on_reset_filter(self):
+        self.cdc_results_filter.click_on_rest_filter()
+
+    def move_lower_price_filter(self, value):
+        self.cdc_results_filter.move_lower_pricing_pointer_right(value)
+
+    def move_higher_price_filter(self, value):
+        self.cdc_results_filter.move_higher_pricing_pointer_right(value)
+
+    def results_in_price_range(self, minValue, maxValue):
+        return self.ccl_view_results.results_is_in_price_range(minValue, maxValue)
+
 

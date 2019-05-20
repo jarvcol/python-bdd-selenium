@@ -12,6 +12,7 @@ class CdcResultsFilter(BasePage):
     lowerPricingPointer = (By.CSS_SELECTOR, ".rz-pointer.rz-pointer-min")
     higherPricingPointer = (By.CSS_SELECTOR, ".rz-pointer.rz-pointer-max")
     resetPriceSlider = (By.CSS_SELECTOR, ".sfp-reset__button")
+    resetFiltersLink = (By.CSS_SELECTOR, 'div.sbsc-container a')
 
     def click_on_price_filter(self):
         self.get_clickable_element_by_selector(self.pricingFilter).click()
@@ -24,9 +25,13 @@ class CdcResultsFilter(BasePage):
             WebDriverWait(self.driver, self.timeout).until(expected_conditions.visibility_of(
                  self.get_element_by_selector(self.lowerPricingPointer)))
             self.get_element_by_selector(self.lowerPricingPointer).send_keys(Keys.ARROW_RIGHT)
+            WebDriverWait(self.driver, self.timeout).until(expected_conditions.visibility_of(
+                self.get_element_by_selector(self.resetFiltersLink)))
 
     def move_higher_pricing_pointer_right(self, value):
         while not (self.get_element_by_selector(self.higherPricingPointer).get_attribute('aria-valuenow') == value):
             WebDriverWait(self.driver, self.timeout).until(expected_conditions.visibility_of(
                  self.get_element_by_selector(self.higherPricingPointer)))
             self.get_element_by_selector(self.higherPricingPointer).send_keys(Keys.ARROW_LEFT)
+            WebDriverWait(self.driver, self.timeout).until(expected_conditions.visibility_of(
+                self.get_element_by_selector(self.resetFiltersLink)))

@@ -25,6 +25,9 @@ class BasePage:
     def navigate_forward(self):
         self.driver.forward()
 
+    def check_current_url_contains(self, urlSegment):
+        return urlSegment in self.get_current_page_url()
+
     def get_current_page_title(self):
         WebDriverWait(self.driver, self.timeout).until(lambda s: self.driver.title)
         return self.driver.title

@@ -9,9 +9,12 @@ class CclViewResults(BasePage):
 
     # By locators
     listOfPrices = (By.CSS_SELECTOR, ".vrgf-price-box__price")
-    learnMoreButtons = (By.CSS_SELECTOR, ".vrg-search-unit .vrgf-learn-more")
-
+    learnMoreButtons = (By.CSS_SELECTOR, ".vrg-search-unit .vrgf-learn-more a")
     resultViewType = (By.XPATH, ".//div/*[@ng-switch-when]")
+
+    def click_on_learn_option_by_index(self, index):
+        href = self.get_element_list_by_selector(self.learnMoreButtons)[int(index)].get_attribute('href')
+        self.go_to_url(href)
 
     def are_results_grid(self):
         resultView = self.get_element_by_selector(self.resultViewType).get_attribute('ng-switch-when')

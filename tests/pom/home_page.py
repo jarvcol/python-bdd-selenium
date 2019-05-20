@@ -52,4 +52,8 @@ class HomePage(BasePage):
     def results_in_price_range(self, minValue, maxValue):
         return self.ccl_view_results.results_is_in_price_range(minValue, maxValue)
 
+    def click_on_learn_option_by_index(self, index):
+        self.ccl_view_results.click_on_learn_option_by_index(index)
 
+    def current_page_is_home(self):
+        return self.check_current_url_contains(self.homePageUrl)

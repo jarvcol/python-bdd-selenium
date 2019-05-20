@@ -14,6 +14,7 @@ class CdcResultsFilter(BasePage):
     resetPriceSlider = (By.CSS_SELECTOR, ".sfp-reset__button")
     resetFiltersLink = (By.CSS_SELECTOR, 'div.sbsc-container a')
 
+
     def click_on_price_filter(self):
         self.get_clickable_element_by_selector(self.pricingFilter).click()
 

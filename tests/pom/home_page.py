@@ -26,10 +26,16 @@ class HomePage(BasePage):
     def click_sail_to(self):
         self.cdc_filter.click_sail_to()
 
+    def click_duration(self):
+        self.cdc_filter.click_duration()
+
     def select_sail_to(self, optionName):
         self.cdc_filter.click_sail_to_option(optionName)
         self.cdc_results_filter = CdcResultsFilter(self.driver)
         self.ccl_view_results = CclViewResults(self.driver)
+
+    def select_duration(self, optionName):
+        self.cdc_filter.click_duration_option(optionName)
 
     def check_results_view_format(self, viewType):
         if(viewType == 'grid'):

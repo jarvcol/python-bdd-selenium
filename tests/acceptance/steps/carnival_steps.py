@@ -17,9 +17,17 @@ def step_imp(context):
 def step_imp(context):
     context.homePage.click_sail_to()
 
+@When('I click on duration filter')
+def step_imp(context):
+    context.homePage.click_duration()
+
 @When('I select sail to "(.*)"')
 def step_imp(context, optionName):
     context.homePage.select_sail_to(optionName)
+
+@When('I select duration as "(.*)"')
+def step_imp(context, optionName):
+    context.homePage.select_duration(optionName)
 
 @When('I click on the pricing filter')
 def step_imp(context):

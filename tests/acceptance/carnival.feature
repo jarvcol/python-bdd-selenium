@@ -8,6 +8,8 @@ Feature: CarnivalTest
     Given I access Carnival Home Page
     When I click on sail to filter
     And I select sail to "The Bahamas"
+    And I click on duration filter
+    And I select duration as "6 - 9 Days"
     Then I should see the results as "grid"
     When I click on the pricing filter
     And I move lower pricing pointer up to "600"
